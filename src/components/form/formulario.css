@@ -1,0 +1,46 @@
+/* Estilo para los labels */
+label {
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 22px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-family: 'Courier New', Courier, monospace; /* Cambia el tipo de fuente */
+}
+
+/* Estilo para los inputs */
+.form-group input.form-control {
+    width: 30%; /* Ajusta el ancho del input */
+    padding: 15px; /* Agrega espacio dentro del input */
+    font-size: 14px; /* Cambia el tamaño de la fuente */
+    font-family: 'Courier New', Courier, monospace; /* Cambia el tipo de fuente */
+    margin-top: 10px;
+    border-radius: 10px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Color del borde */
+}
+.form-group select {
+    width: 30%; /* Ajusta el ancho según sea necesario */
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px; /* Cambia el tamaño de la fuente */
+    font-family: 'Courier New', Courier, monospace; /* Cambia el tipo de fuente */
+    
+  }
+  
+/* Estilo para el botón */
+.btn-primary {
+    background-color: #cad6e4;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Color del borde */
+}
+
+.btn-primary:hover {
+    background-color: #676e77;
+}
