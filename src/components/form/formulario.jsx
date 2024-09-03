@@ -8,17 +8,45 @@ import "./formulario.css";
 const Formulario = () => {
 
     const [paises, setPaises] = useState([]);
+    const [estados, setEstados] = useState([]);
+    const [paisSeleccionado, setPaisSeleccionado] = useState("");
+    const [estadoSeleccionado, setEstadoSeleccionado] = useState("");
+
 
     useEffect(() =>{
-        //obtener la lista desde el backend
-        axios.get('http://localhost:8080/pais')
-        .then(response =>{
-            setPaises(response.data);
-        })
-        .catch(error =>{
-            console.log("Hubo un error al obtener los paises ", error)
-        });
-    }, []);
+
+        //Cargar paises para iniciar el componente
+        const fetchPaises = async () =>{
+            try{
+                const response = await axios.get('http://localhost:8080/pais');
+                setPaises(response.data)
+            }
+            catch(error){
+                console.error("Error al cargar los paises ", error)
+            }
+        };
+        fetchPaises();
+    },[]);
+    
+    useEffect(() =>{
+        //Cargar los estados cuando se seleccione un pais
+        console.log('Pais seleccionado:', paisSeleccionado);
+        const fetchEstados = async () =>{
+            if(paisSeleccionado){
+                try{
+                    const response = await axios.get(`http://localhost:8080/estados/${paisSeleccionado}`);
+                    setEstados(response.data);
+                }
+                catch(error){
+                    console.error("Error al cargar los estados ", error)    
+                }
+            }
+            else{
+                setEstados([]);
+            }
+        };
+        fetchEstados();
+    },[paisSeleccionado]);
 
 
 
@@ -53,18 +81,25 @@ const Formulario = () => {
         />
       </div>
       <div className="form-group">
-        <label>País</label>
-        <select
-            id = "pais"
-            className="form-control">
-            <option value="">Selecciona un pais</option>
-            {paises.map(pais => (
-                <option key={pais.id} value={pais.id}>
-                    {pais.nombre}
-                </option>
-            ))}
-        </select>
-      </div>
+                <label>País</label>
+                <select onChange={(e) => setPaisSeleccionado(e.target.value)} value={paisSeleccionado}>
+                    <option value="">Seleccione un país</option>
+                    {paises.map(pais => (
+                        <option key={pais.id} value={pais.id}>{pais.nombre}</option>
+                    ))}
+                </select>
+            </div>
+      
+      <div className="form-group">
+                <label>Estado o region</label>
+                <select>
+                    <option value="">Seleccione un estado</option>
+                    {estados.map(estado => (
+                        <option key={estado.id} value={estado.id}>{estado.nombre}</option>
+                    ))}
+                </select>
+            </div>
+        
       <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
     </div>
