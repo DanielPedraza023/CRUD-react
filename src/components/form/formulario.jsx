@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { fectchPaises, fecthEstados } from "../../services/apiService";
 import "./formulario.css";
-
-
 
 
 const Formulario = () => {
@@ -15,39 +13,36 @@ const Formulario = () => {
 
     useEffect(() =>{
 
-        //Cargar paises para iniciar el componente
-        const fetchPaises = async () =>{
+        const cargarPaises = async () => {
             try{
-                const response = await axios.get('http://localhost:8080/pais');
-                setPaises(response.data)
+                const paisesData = await fectchPaises();
+                setPaises(paisesData);
             }
             catch(error){
-                console.error("Error al cargar los paises ", error)
+                console.log("Error al cargar los paises: ", error)
             }
-        };
-        fetchPaises();
+        }
+        cargarPaises();
     },[]);
     
     useEffect(() =>{
-        //Cargar los estados cuando se seleccione un pais
-        console.log('Pais seleccionado:', paisSeleccionado);
-        const fetchEstados = async () =>{
+        
+        const cargarEstados = async () => {
             if(paisSeleccionado){
                 try{
-                    const response = await axios.get(`http://localhost:8080/estados/${paisSeleccionado}`);
-                    setEstados(response.data);
+                    const estadosData = await fecthEstados(paisSeleccionado);
+                    setEstados(estadosData);
                 }
                 catch(error){
-                    console.error("Error al cargar los estados ", error)    
+                    console.log("Error al cargar los estados: ", error)
                 }
             }
             else{
                 setEstados([]);
             }
-        };
-        fetchEstados();
+        }
+        cargarEstados();
     },[paisSeleccionado]);
-
 
 
   return (
