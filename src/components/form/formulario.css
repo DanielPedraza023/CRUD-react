@@ -1,35 +1,23 @@
-/* Estilo para los labels */
 label {
     display: block;
-    flex-direction: column;
-    align-items: flex-start;
     font-size: 25px;
     margin-bottom: 3px;
     margin-top: 20px;
-    font-family: 'Courier New', Courier, monospace; /* Cambia el tipo de fuente */
+    font-family: 'Courier New', Courier, monospace;
 }
 
-/* Estilo para los inputs */
-.form-group input.form-control {
-    width: 30%; /* Ajusta el ancho del input */
-    padding: 15px; /* Agrega espacio dentro del input */
-    font-size: 16px; /* Cambia el tamaño de la fuente */
-    font-family: 'Courier New', Courier, monospace; /* Cambia el tipo de fuente */
-    margin-top: 10px;
-    border-radius: 10px; /* Bordes redondeados */
-    border: 1px solid #ccc; /* Color del borde */
-}
+.form-group input.form-control, 
 .form-group select {
-    width: 30%; /* Ajusta el ancho según sea necesario */
-    padding: 8px;
-    border-radius: 4px;
+    width: 30%; /* Ajusta el ancho */
+    margin: 10px auto; /* Centra los inputs y selects */
+    display: block;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 10px;
     border: 1px solid #ccc;
-    font-size: 16px; /* Cambia el tamaño de la fuente */
-    font-family: 'Courier New', Courier, monospace; /* Cambia el tipo de fuente */
-    margin-top: 5px;
-  }
-  
-/* Estilo para el botón */
+}
+
 .btn-primary {
     background-color: #cad6e4;
     border: none;
@@ -37,10 +25,15 @@ label {
     margin-top: 10px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 10px; /* Bordes redondeados */
-    border: 1px solid #ccc; /* Color del borde */
+    border-radius: 10px;
+    border: 1px solid #ccc;
 }
 
 .btn-primary:hover {
     background-color: #676e77;
+}
+
+div {
+    width: 100%;
+    margin: 0 auto; /* Centrar el contenedor */
 }

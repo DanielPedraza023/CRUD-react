@@ -50,3 +50,15 @@ export const savePersona = async ({nombre, apellido, edad, pais, estado}) =>{
         throw error;
     }
 };
+
+export const deletePersona = async (id) => {
+    try {
+        const response = await axios.delete(`${Api_URL}/personas/delete/${id}`)
+        //console.log(response)
+    }
+        catch(error){
+                console.log("Error al eliminar la persona: ", error);
+                throw error
+            }   
+}
+

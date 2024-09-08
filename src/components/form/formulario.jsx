@@ -12,6 +12,17 @@ const Formulario = ( {updatePersonas} ) => {
     const [apellido, setApellido] = useState("");
     const [edad, setEdad] = useState("");
 
+    const [formValid, setFormValid] = useState(false); //Para controlar el boton de guardar
+
+    // Validar si el formulario está completo
+    useEffect(() => {
+      if (nombre && apellido && edad && paisSeleccionado && estadoSeleccionado) {
+          setFormValid(true);
+      } else {
+          setFormValid(false);
+      }
+    }, [nombre, apellido, edad, paisSeleccionado, estadoSeleccionado]);
+
     useEffect(() => {
         const cargarPaises = async () => {
             try {
@@ -127,7 +138,7 @@ const Formulario = ( {updatePersonas} ) => {
                     </select>
                 </div>
 
-                <button type="submit" className="btn btn-primary">Guardar</button>
+                <button type="submit" className="btn btn-primary" disabled = {!formValid} >Guardar</button>
             </form>
         </div>
     );

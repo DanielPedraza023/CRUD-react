@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <h1>Crear Persona</h1>
       <Formulario updatePersonas = {updatePersonas}/>
-      <PersonasList personas = {personas}/>
+      <PersonasList personas = {personas} updatePersonas = {updatePersonas}/>
     </div>
   );
 }
